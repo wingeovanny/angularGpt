@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-pros-cons-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './pros-cons-page.component.html',
-  styleUrl: './pros-cons-page.component.css'
+  styleUrl: './pros-cons-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProsConsPageComponent {
-
-}
+export default class ProsConsPageComponent {}

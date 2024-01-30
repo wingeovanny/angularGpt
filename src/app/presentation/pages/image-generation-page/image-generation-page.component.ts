@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-image-generation-page',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './image-generation-page.component.html',
-  styleUrl: './image-generation-page.component.css'
+  styleUrl: './image-generation-page.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ImageGenerationPageComponent {
-
-}
+export default class ImageGenerationPageComponent {}
