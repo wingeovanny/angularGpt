@@ -106,7 +106,7 @@ export const routes: Routes = [
         data: {
           icon: 'fa-solid fa-user',
           title: 'Vendedor',
-          description: 'Fabricio Salvacero',
+          description: 'Salvacero',
         },
       },
       {

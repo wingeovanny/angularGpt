@@ -53,7 +53,15 @@ export default class AssistantPageComponent implements OnInit {
       .postQuestion(this.threadId()!, question)
       .subscribe((replies) => {
         this.isLoading.set(false);
-
+        // const dat = replies.at(-1);
+        // if (!dat) return;
+        // this.messages.update((prev) => [
+        //   ...prev,
+        //   {
+        //     text: dat.content[dat.content.length - 1],
+        //     isGpt: dat.role === 'assistant',
+        //   },
+        // ]);
         for (const reply of replies) {
           for (const message of reply.content) {
             this.messages.update((prev) => [
