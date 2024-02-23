@@ -110,6 +110,16 @@ export const routes: Routes = [
         },
       },
       {
+        path: 'ventas',
+        loadComponent: () =>
+          import('./presentation/pages/sellerPage/sellerPage.component'),
+        data: {
+          icon: 'fa-solid fa-user',
+          title: 'Vendedor',
+          description: 'Salvacero',
+        },
+      },
+      {
         path: '**',
         redirectTo: 'assistant',
         pathMatch: 'full',

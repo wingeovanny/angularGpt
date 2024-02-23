@@ -10,6 +10,7 @@ import {
   imageVariationUseCase,
   createThreadUseCase,
   postQuestionUseCase,
+  sellerUseCase,
 } from '@use-cases/index';
 import { Observable, from, of, tap } from 'rxjs';
 
@@ -17,6 +18,10 @@ import { Observable, from, of, tap } from 'rxjs';
 export class OpenAiService {
   checkOrthography(prompt: string) {
     return from(orthographyUseCase(prompt));
+  }
+
+  seller(prompt: string) {
+    return from(sellerUseCase(prompt));
   }
 
   prosConsDiscusser(prompt: string) {
