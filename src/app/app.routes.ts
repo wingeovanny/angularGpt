@@ -105,20 +105,20 @@ export const routes: Routes = [
           import('./presentation/pages/assistantPage/assistantPage.component'),
         data: {
           icon: 'fa-solid fa-user',
-          title: 'Vendedor',
-          description: 'Salvacero',
+          title: 'Asistente',
+          description: 'Consultas',
         },
       },
-      {
-        path: 'ventas',
-        loadComponent: () =>
-          import('./presentation/pages/sellerPage/sellerPage.component'),
-        data: {
-          icon: 'fa-solid fa-user',
-          title: 'Vendedor',
-          description: 'Salvacero',
-        },
-      },
+      // {
+      //   path: 'ventas',
+      //   loadComponent: () =>
+      //     import('./presentation/pages/sellerPage/sellerPage.component'),
+      //   data: {
+      //     icon: 'fa-solid fa-user',
+      //     title: 'Vendedor',
+      //     description: 'Salvacero',
+      //   },
+      // },
       {
         path: '**',
         redirectTo: 'assistant',

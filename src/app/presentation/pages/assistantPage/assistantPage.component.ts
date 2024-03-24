@@ -38,9 +38,7 @@ export default class AssistantPageComponent implements OnInit {
   public threadId = signal<string | undefined>(undefined);
 
   ngOnInit(): void {
-    console.log('this.openAiService', 'ENtro');
     this.openAiService.createThread().subscribe((id) => {
-      console.log('id', id);
       this.threadId.set(id);
     });
   }
@@ -48,28 +46,33 @@ export default class AssistantPageComponent implements OnInit {
   handleMessage(question: string) {
     this.isLoading.set(true);
     this.messages.update((prev) => [...prev, { text: question, isGpt: false }]);
-    console.log('this.threadId()', this.threadId());
+
+    // this.openAiService
+    //   .postQuestion(this.threadId()!, question)
+    //   .subscribe((replies) => {
+    //     this.isLoading.set(false);
+    //     for (const reply of replies) {
+    //       for (const message of reply.content) {
+    //         this.messages.update((prev) => [
+    //           ...prev,
+    //           { text: message, isGpt: reply.role === 'assistant' },
+    //         ]);
+    //       }
+    //     }
+    //   });
     this.openAiService
       .postQuestion(this.threadId()!, question)
       .subscribe((replies) => {
         this.isLoading.set(false);
-        // const dat = replies.at(-1);
-        // if (!dat) return;
-        // this.messages.update((prev) => [
-        //   ...prev,
-        //   {
-        //     text: dat.content[dat.content.length - 1],
-        //     isGpt: dat.role === 'assistant',
-        //   },
-        // ]);
-        for (const reply of replies) {
+
+        // Obtener los dos últimos elementos del array
+        const lastTwoReplies = replies.slice(-1);
+
+        for (const reply of lastTwoReplies) {
           for (const message of reply.content) {
             this.messages.update((prev) => [
               ...prev,
-              {
-                text: message,
-                isGpt: reply.role === 'assistant',
-              },
+              { text: message, isGpt: reply.role === 'assistant' },
             ]);
           }
         }
